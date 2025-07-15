@@ -18,7 +18,8 @@ class SystemState(enum.Enum):
 class test_Publisher(Node):
     def __init__(self,name):
         super().__init__(name)
-        self.pub = self.create_publisher(Int32, "/system_state", 10)
+        self.modul_name = "wei"
+        self.pub = self.create_publisher(Int32, f"/{self.modul_name}/system_state", 10)
         self.pub2 = self.create_publisher(Int32MultiArray, "/error_codes", 10)
         self.time = self.create_timer(0.5, self.time_callback)
 
