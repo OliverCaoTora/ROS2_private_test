@@ -16,7 +16,8 @@ class SystemState(enum.Enum):
 class test_Subscriber(Node):
     def __init__(self, name):
         super().__init__(name)
-        self.sub = self.create_subscription(Int32, "/system_state", self.sub_callback, 10)
+        self.modul_name = "wei"
+        self.sub = self.create_subscription(Int32, f"/{self.modul_name}/system_state", self.sub_callback, 10)
         self.sub2 = self.create_subscription(Int32MultiArray, "/error_codes", self.sub2_callback, 10)
         self.system_state = 1
         self.error_codes = None
